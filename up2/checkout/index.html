@@ -1,0 +1,660 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<script
+			src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+			data-token="42b3781d-2074-4387-ac36-a7dd7dd3ef11"
+	>
+	</script>
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D4L781BC77U4IAHDOBPG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+
+        <!-- TikTok Pixel Code Start -->
+    
+    <!-- TikTok Pixel Code End -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="a.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento via PIX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/qrcode.min.js"></script>
+    <style>
+        .text-primary { color: #ff075b; }
+        .bg-primary { background-color: #ff075b; }
+        .bg-primary-600 { background-color: #e0065a; }
+        .border-primary { border-color: #ff075b; }
+    </style>
+    
+    <!-- TikTok Pixel Helper Functions -->
+    <script>
+      // Generate UUID v4 for event deduplication
+      function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+
+      // SHA-256 hash function
+      async function sha256Hash(message) {
+        if (!message) return '';
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+      }
+
+      // Validate content_id
+      function validateContentId(id) {
+        if (!id || id === '' || id === 'null' || id === 'undefined') {
+          return 'tiktok-pagamento2-taxa-2064';
+        }
+        return id;
+      }
+
+      // Get ttclid from URL
+      function getTtclid() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('ttclid') || '';
+      }
+
+      // Global TikTok Tracking for pagamento2
+      window.TikTokTracking = {
+        trackInitiateCheckout: async function(productData) {
+          const event_id = generateUUID();
+          const content_id = validateContentId(productData.content_id);
+          
+          const eventData = {
+            event_id: event_id,
+            content_id: content_id,
+            content_ids: [content_id],
+            content_type: 'product',
+            quantity: 1,
+            description: productData.content_name || 'Taxa Pagamento2',
+            value: productData.value || 20.64,
+            currency: 'BRL',
+            contents: [{
+              content_id: content_id,
+              content_name: productData.content_name || 'Taxa Pagamento2',
+              quantity: 1,
+              price: productData.value || 20.64
+            }]
+          };
+
+          const ttclid = getTtclid();
+          if (ttclid) {
+            eventData.callback = ttclid;
+          }
+
+          console.log('[TikTok Pixel pagamento2] InitiateCheckout event:', eventData);
+          
+          if (typeof ttq !== 'undefined') {
+            ttq.track('InitiateCheckout', eventData);
+          }
+
+          return event_id;
+        },
+
+        trackPurchase: async function(productData) {
+          const event_id = generateUUID();
+          const content_id = validateContentId(productData.content_id);
+          
+          const eventData = {
+            event_id: event_id,
+            content_id: content_id,
+            content_ids: [content_id],
+            content_type: 'product',
+            quantity: 1,
+            description: productData.content_name || 'Taxa Pagamento2',
+            value: productData.value || 20.64,
+            currency: 'BRL',
+            contents: [{
+              content_id: content_id,
+              content_name: productData.content_name || 'Taxa Pagamento2',
+              quantity: 1,
+              price: productData.value || 20.64
+            }]
+          };
+
+          const ttclid = getTtclid();
+          if (ttclid) {
+            eventData.callback = ttclid;
+          }
+
+          console.log('[TikTok Pixel pagamento2] Purchase event:', eventData);
+          
+          if (typeof ttq !== 'undefined') {
+            ttq.track('Purchase', eventData);
+          }
+
+          return event_id;
+        }
+      };
+
+      console.log('[TikTok Pixel pagamento2] Helper functions initialized');
+    </script>
+    <!-- End TikTok Pixel Helper Functions -->
+</head>
+<body>
+    <main class="min-h-screen bg-gray-50 pb-12">
+        <div class="w-full h-40 lg:h-60 xl:h-90">
+            <img alt="Kwai Banner" class="w-full h-full object-cover" loading="eager" src="./tktk.jpg">
+        </div>
+        <div class="custom-container px-4">
+            <div class="mt-10 bg-white shadow-lg rounded-xl p-4 border border-gray-200 min-h-60 max-w-4xl mx-auto">
+                <div class="flex justify-end">
+                    <div class="flex items-center bg-green-600 text-white rounded-md text-xs py-1 px-2">
+                        <img alt="" width="20" height="5" src="data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20Fundo%20verde%20do%20botão%20--%3e%3crect%20x='0'%20y='0'%20width='24'%20height='24'%20rx='4'%20fill='%2328a745'%20/%3e%3c!--%20Ícone%20de%20cadeado%20--%3e%3cg%20fill='white'%20transform='translate(4,%204)'%3e%3c!--%20Corpo%20do%20cadeado%20--%3e%3crect%20x='3'%20y='7'%20width='10'%20height='7'%20rx='1'%20/%3e%3c!--%20Arco%20do%20cadeado%20--%3e%3cpath%20d='M5,7%20L5,4.5%20C5,2.5%207,1%208,1%20C9,1%2011,2.5%2011,4.5%20L11,7'%20stroke='white'%20fill='none'%20stroke-width='2'%20stroke-linecap='round'%20/%3e%3c/g%3e%3c/svg%3e">
+                        Ambiente Seguro
+                    </div>
+                </div>
+                
+                <div id="loading" class="flex flex-col items-center justify-center py-12">
+                    <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
+                    <p class="mt-4 text-gray-600">Gerando QRCode para pagamento...</p>
+                </div>
+                
+                <div id="payment-content" class="flex flex-col gap-y-1 items-center mt-6" style="display: none;">
+                    <div class="w-full">
+                        <div class="flex flex-col items-center mb-6">
+                            <p class="text-center text-primary font-medium text-xl flex items-center gap-x-2">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                    <path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm1 17H7V4h10v14zm-3 3h-4v-1h4v1z"></path>
+                                </svg>
+                                <span>Escaneie o QRCode abaixo</span>
+                            </p>
+                            <div id="qrcode" class="my-5"></div>
+                            <img id="qrcode-img" alt="Qr code" class="my-5" style="display: none;">
+                            
+                            <p class="text-center text-primary font-medium text-xl flex items-center gap-x-2 mt-6">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+                                </svg>
+                                Ou copie o código PIX
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <div class="max-w-xs mx-auto bg-white rounded-lg">
+                                <div id="pix-code" class="text-gray-700 text-sm font-mono whitespace-nowrap overflow-hidden text-ellipsis bg-gray-100 p-2 mb-3 rounded-md"></div>
+                                <button id="copy-btn" class="w-full bg-primary hover:bg-primary-600 text-white rounded-md py-2 flex items-center justify-center transition-colors mb-4 text-sm cursor-pointer">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="mr-2" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+                                    </svg>
+                                    Copiar
+                                </button>
+                                
+                                <div class="flex flex-col space-y-3 mt-8 bg-gray-50 p-4 rounded-md">
+                                    <div class="flex border-l-4 border-primary pl-3">
+                                        <div class="flex items-center">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" class="text-primary mr-2" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M621.16 54.46C582.37 38.19 543.55 32 504.75 32c-123.17-.01-246.33 62.34-369.5 62.34-30.89 0-61.76-3.92-92.65-13.72-3.47-1.1-6.95-1.62-10.35-1.62C15.04 79 0 92.32 0 110.81v317.26c0 12.63 7.23 24.6 18.84 29.46C57.63 473.81 96.45 480 135.25 480c123.17 0 246.34-62.35 369.51-62.35 30.89 0 61.76 3.92 92.65 13.72 3.47 1.1 6.95 1.62 10.35 1.62 17.21 0 32.25-13.32 32.25-31.81V83.93c-.01-12.64-7.24-24.6-18.85-29.47zM48 132.22c20.12 5.04 41.12 7.57 62.72 8.93C104.84 170.54 79 192.69 48 192.69v-60.47zm0 285v-47.78c34.37 0 62.18 27.27 63.71 61.4-22.53-1.81-43.59-6.31-63.71-13.62zM320 352c-44.19 0-80-42.99-80-96 0-53.02 35.82-96 80-96s80 42.98 80 96c0 53.03-35.83 96-80 96zm272 27.78c-17.52-4.39-35.71-6.85-54.32-8.44 5.87-26.08 27.5-45.88 54.32-49.28v57.72zm0-236.11c-30.89-3.91-54.86-29.7-55.81-61.55 19.54 2.17 38.09 6.23 55.81 12.66v48.89z"></path>
+                                            </svg>
+                                            <span class="text-primary font-medium">Valor:</span>
+                                        </div>
+                                        <div id="amount" class="ml-auto font-medium text-gray-600">R$ 0,00</div>
+                                    </div>
+                                    
+                                    <div class="flex border-l-4 border-primary pl-3">
+                                        <div class="flex items-center">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-primary mr-2" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="Clock_2"><g><path d="M12,21.933A9.933,9.933,0,1,1,21.933,12,9.944,9.944,0,0,1,12,21.933ZM12,3.067A8.933,8.933,0,1,0,20.933,12,8.943,8.943,0,0,0,12,3.067Z"></path><path d="M18,12.5H12a.429.429,0,0,1-.34-.14c-.01,0-.01-.01-.02-.02A.429.429,0,0,1,11.5,12V6a.5.5,0,0,1,1,0v5.5H18A.5.5,0,0,1,18,12.5Z"></path></g></g>
+                                            </svg>
+                                            <span class="text-primary font-medium">Válido até:</span>
+                                        </div>
+                                        <div id="expiration" class="ml-auto font-medium text-gray-600">--/--/---- --:--</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="error-message" class="text-red-600 text-center mt-4 p-4 bg-red-50 rounded-md" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+    
+    
+        <script>
+   // Variáveis globais
+let transactionId = null;
+let checkPaymentInterval = null;
+let retryCount = 0;
+const maxRetries = 3;
+const retryDelay = 2000; // 2 segundos
+
+// Função para extrair parâmetros UTM da URL
+function getUtmParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = {};
+    
+    const utmFields = [
+        'utm_source', 'utm_medium', 'utm_campaign', 
+        'utm_term', 'utm_content', 'click_id',
+        'fbclid', 'gclid', 'msclkid', 'ttclid',
+        'xcod', 'sck'  // Parâmetros adicionais esperados pelo pagamento.php
+    ];
+    
+    utmFields.forEach(param => {
+        if (urlParams.has(param)) {
+            utmParams[param] = urlParams.get(param);
+        }
+    });
+    
+    return utmParams;
+}
+
+// Função para gerar CPF válido
+function gerarCPF() {
+    let cpf = '';
+    for (let i = 0; i < 9; i++) {
+        cpf += Math.floor(Math.random() * 10);
+    }
+    
+    // Cálculo do primeiro dígito verificador
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf.charAt(i)) * (10 - i);
+    }
+    let resto = 11 - (soma % 11);
+    let dv1 = resto > 9 ? 0 : resto;
+    cpf += dv1;
+    
+    // Cálculo do segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+    resto = 11 - (soma % 11);
+    let dv2 = resto > 9 ? 0 : resto;
+    cpf += dv2;
+    
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+}
+
+// Função para gerar nome fictício
+function gerarNome() {
+    const nomes = ['Joao', 'Maria', 'Pedro', 'Ana', 'Carlos', 'Mariana', 'Lucas', 'Juliana', 'Fernando', 'Patricia'];
+    const sobrenomes = ['Silva', 'Santos', 'Oliveira', 'Souza', 'Rodrigues', 'Ferreira', 'Alves', 'Pereira', 'Gomes', 'Martins'];
+    
+    
+    const nome = nomes[Math.floor(Math.random() * nomes.length)];
+    const sobrenome1 = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
+    const sobrenome2 = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
+    
+    return `${nome} ${sobrenome1} ${sobrenome2}`;
+}
+
+// Função para gerar e-mail válido
+function gerarEmail(nome) {
+    const provedores = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com.br', 'icloud.com'];
+    const nomeFormatado = nome.toLowerCase().replace(/\s+/g, '.');
+    const provedor = provedores[Math.floor(Math.random() * provedores.length)];
+    return `${nomeFormatado}@${provedor}`;
+}
+
+// Função para gerar telefone válido
+function gerarTelefone() {
+    const ddd = ['11', '21', '31', '41', '51', '61', '71', '81', '91'];
+    const num = Math.floor(10000000 + Math.random() * 90000000);
+    return `${ddd[Math.floor(Math.random() * ddd.length)]}9${num.toString().substring(1)}`;
+}
+
+// Função para verificar o status do pagamento
+function verificarPagamento(idTransacao) {
+    console.log('Verificando status do pagamento:', idTransacao);
+    
+    return fetch(`/pagamento/verificar.php?id=${encodeURIComponent(idTransacao)}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(`HTTP ${response.status}: ${text}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Resposta do verificar.php:', data);
+        return data;
+    })
+    .catch(error => {
+        console.error('Erro ao verificar pagamento:', error);
+        throw error;
+    });
+}
+
+// Função para iniciar a verificação periódica
+function iniciarVerificacaoPagamento(idTransacao) {
+    console.log('Iniciando verificação periódica para:', idTransacao);
+    
+    checkPaymentInterval = setInterval(() => {
+        verificarPagamento(idTransacao)
+            .then(data => {
+                console.log('📊 Dados completos recebidos:', JSON.stringify(data, null, 2));
+                console.log('📊 Status recebido:', data.status);
+                console.log('📊 Tipo do status:', typeof data.status);
+                
+                // Verifica se o pagamento foi aprovado
+                const statusPago = data.status && (
+                    data.status.toLowerCase() === 'paid' || 
+                    data.status.toLowerCase() === 'approved' ||
+                    data.status.toLowerCase() === 'completed'
+                );
+                
+                console.log('📊 Status pago?', statusPago);
+                
+                if (statusPago) {
+                    console.log('✅ Pagamento aprovado! Status:', data.status);
+                    console.log('🛑 Parando verificação periódica...');
+                    clearInterval(checkPaymentInterval);
+                    
+                    // Obtém o valor do pagamento
+                    const valorCentavos = (data.data && data.data.amount) || 2064;
+                    console.log('💰 Valor em centavos:', valorCentavos);
+                    
+                    // Envia webhook de pagamento aprovado para xTracky
+                    const utmParams = getUtmParams();
+                    console.log('📤 Enviando webhook para xTracky...');
+                    
+                    // Envia evento Purchase para o TikTok Pixel (client-side)
+                    if (typeof window.TikTokTracking !== 'undefined') {
+                        window.TikTokTracking.trackPurchase({
+                            content_id: idTransacao || 'tiktok-pagamento2-taxa-2064',
+                            content_name: 'Pagamento2 - Pagamento Aprovado R$ 24,50',
+                            value: valorCentavos / 100
+                        }).then(event_id => {
+                            console.log('[TikTok Pixel pagamento2] Purchase fired (client-side). Event ID:', event_id);
+                        });
+                    }
+                    
+                    // Envia evento Purchase para TikTok Events API (server-side)
+                    console.log('📤 Enviando Purchase event para TikTok Events API (server-side)...');
+                    sendTikTokServerSideEvent(
+                        idTransacao,
+                        valorCentavos / 100, // Converte para BRL
+                        'Pagamento2 - Pagamento Aprovado R$ 24,50',
+                        utmParams
+                    ).catch(error => {
+                        console.error('Erro ao enviar TikTok server-side event:', error);
+                    });
+                    
+                    // Aguarda um pouco antes de redirecionar para garantir que os eventos foram enviados
+                    console.log('⏳ Aguardando 1.5 segundos antes de redirecionar...');
+                    setTimeout(() => {
+                        const redirectUrl = '/up3/index.html' + window.location.search;
+                        console.log('🔄 Redirecionando para:', redirectUrl);
+                        window.location.href = redirectUrl;
+                    }, 1500);
+                } else {
+                    console.log('⏳ Aguardando pagamento... Status:', data.status);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Erro na verificação:', error);
+                console.error('❌ Stack trace:', error.stack);
+            });
+    }, 5000); // Verifica a cada 5 segundos
+}
+
+
+// Função para exibir mensagens de erro
+function showError(message) {
+    document.getElementById('loading').style.display = 'none';
+    const errorElement = document.getElementById('error-message');
+    errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+    errorElement.style.display = 'block';
+}
+
+// Função para gerar os dados do PIX
+function generatePixData() {
+    const nome = gerarNome();
+    const cpf = gerarCPF();
+    const telefone = gerarTelefone();
+    const email = gerarEmail(nome);
+    
+    return {
+        name: nome,
+        email: email,
+        cpf: cpf.replace(/\D/g, ''),
+        phone: telefone,
+        amount: 1672, 
+        item_title: "Pagamento de Serviço",
+        utmQuery: JSON.stringify(getUtmParams()),
+    };
+}
+
+// Função para enviar webhook para xTracky
+
+// Função para enviar evento Purchase para TikTok Events API (server-side)
+function sendTikTokServerSideEvent(transactionId, value, contentName, utmParams) {
+    const eventData = {
+        transactionId: transactionId,
+        value: value, // Em BRL (não centavos)
+        content_id: transactionId || 'tiktok-pagamento2-taxa-2064',
+        content_name: contentName || 'Pagamento2 - Pagamento Aprovado',
+        email: null, // Pode adicionar se tiver
+        phone: null, // Pode adicionar se tiver
+        utmParams: utmParams || {}
+    };
+    
+    console.log('[TikTok Server-Side] 📤 Enviando Purchase event:', eventData);
+    
+    return fetch('../pagamento/tiktok-events-api.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            console.log('[TikTok Server-Side] ✅ Purchase event enviado com sucesso!', result);
+        } else {
+            console.error('[TikTok Server-Side] ❌ Erro ao enviar Purchase event:', result);
+        }
+        return result;
+    })
+    .catch(error => {
+        console.error('[TikTok Server-Side] ❌ Erro na requisição:', error);
+        throw error;
+    });
+}
+
+// Função para enviar webhook para xTracky
+
+// Função para processar o PIX quando gerado com sucesso
+function handlePixSuccess(data) {
+    console.log('Dados recebidos do servidor:', data);
+    
+    // Adapta para a estrutura correta dos dados
+    transactionId = data.token || data.transactionId || data.id;
+    
+    // Formata o valor
+    const valorCentavos = data.valor || data.amount || 0;
+    const amount = (valorCentavos / 100).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+    document.getElementById('amount').textContent = amount;
+    
+    // Envia webhook de PIX gerado (waiting_payment) para xTracky
+    const utmParams = getUtmParams();
+    
+    // Envia evento InitiateCheckout para o TikTok Pixel com helper function
+    if (typeof window.TikTokTracking !== 'undefined') {
+        window.TikTokTracking.trackInitiateCheckout({
+            content_id: transactionId || 'tiktok-pagamento2-taxa-2064',
+            content_name: 'Pagamento2 - PIX Gerado R$ 24,50',
+            value: valorCentavos / 100
+        }).then(event_id => {
+            console.log('[TikTok Pixel pagamento2] InitiateCheckout fired. Event ID:', event_id);
+        });
+    }
+    
+    // Formata a data de expiração
+    const expirationDate = new Date(Date.now() + 5 * 60000); // 5 minutos a partir de agora
+    const formattedDate = expirationDate.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    document.getElementById('expiration').textContent = formattedDate;
+    
+    // Preenche o código PIX
+    const pixCode = data.pixCode || data.pix_qr_code || '';
+    document.getElementById('pix-code').textContent = pixCode;
+    
+    // Gera o QRCode
+    const qrCodeUrl = data.qrCodeUrl || data.qr_code_url || '';
+    
+    // Função para mostrar o conteúdo após QR code estar pronto
+    function showPaymentContent() {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('payment-content').style.display = 'block';
+    }
+    
+    if (qrCodeUrl && qrCodeUrl.startsWith('http')) {
+        // Se tiver URL do QR Code, usa a imagem
+        const qrcodeImg = document.getElementById('qrcode-img');
+        qrcodeImg.onload = function() {
+            showPaymentContent();
+        };
+        qrcodeImg.onerror = function() {
+            showPaymentContent(); // Mostra mesmo se houver erro
+        };
+        qrcodeImg.src = qrCodeUrl;
+        qrcodeImg.style.display = 'block';
+        document.getElementById('qrcode').style.display = 'none';
+    } else if (pixCode) {
+        // Caso contrário, gera o QR Code a partir do código PIX
+        QRCode.toCanvas(document.getElementById('qrcode'), pixCode, {
+            width: 200,
+            margin: 2,
+            color: {
+                dark: '#000000',
+                light: '#ffffff'
+            }
+        }, function(error) {
+            if (error) {
+                console.error('Erro ao gerar QRCode:', error);
+                const qrcodeImg = document.getElementById('qrcode-img');
+                qrcodeImg.onload = function() {
+                    showPaymentContent();
+                };
+                qrcodeImg.onerror = function() {
+                    showPaymentContent();
+                };
+                qrcodeImg.src = `https://quickchart.io/qr?text=${encodeURIComponent(pixCode)}&size=200`;
+                qrcodeImg.style.display = 'block';
+                document.getElementById('qrcode').style.display = 'none';
+            } else {
+                // QR Code gerado com sucesso
+                showPaymentContent();
+            }
+        });
+    } else {
+        // Se não houver QR code, mostra o conteúdo mesmo assim
+        showPaymentContent();
+    }
+    
+    // Configura o botão de copiar
+    document.getElementById('copy-btn').addEventListener('click', function() {
+        const pixCodeElement = document.getElementById('pix-code');
+        const pixCodeText = pixCodeElement.textContent;
+        
+        navigator.clipboard.writeText(pixCodeText).then(function() {
+            const copyBtn = document.getElementById('copy-btn');
+            copyBtn.innerHTML = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="mr-2" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path></svg>Copiado!';
+            
+            setTimeout(function() {
+                copyBtn.innerHTML = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="mr-2" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>Copiar';
+            }, 2000);
+        }).catch(function(err) {
+            console.error('Erro ao copiar:', err);
+        });
+    });
+    
+    if (transactionId) {
+        iniciarVerificacaoPagamento(transactionId);
+    }
+}
+
+// Função para tentar gerar o PIX com retentativas
+function tryGeneratePix(retryCount = 0) {
+    // Captura todos os parâmetros UTM da URL atual
+    const utmParams = getUtmParams();
+    
+    const paymentData = {
+        amount: 2064,
+        ...utmParams  // Espalha os parâmetros UTM diretamente no objeto
+    };
+    
+    console.log('Enviando dados para pagamento.php:', paymentData);
+    
+    // Converte os dados para URLSearchParams para enviar como form-data
+    const formData = new URLSearchParams();
+    for (const key in paymentData) {
+        if (paymentData[key] !== null && paymentData[key] !== undefined) {
+            formData.append(key, paymentData[key]);
+        }
+    }
+    
+    fetch('pagamento.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Sucesso - processa o PIX
+            handlePixSuccess(data);
+        } else {
+            // Outros erros ou esgotou as tentativas
+            showError(data.error || 'Erro ao gerar o PIX.. Gerando novamente...');
+        }
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
+        showError('Erro ao conectar com o servidor. Tentando novamente...');
+        if (retryCount < maxRetries) {
+            setTimeout(() => tryGeneratePix(retryCount + 1), retryDelay);
+        }
+    });
+}
+
+// Quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicia o processo de geração do PIX
+    tryGeneratePix();
+});
+    </script>
+
+</body></html>
