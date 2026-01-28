@@ -1,29 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/front/(.*)",
-      "dest": "/front/$1"
-    },
-    {
-      "src": "/gol/(.*)",
-      "dest": "/gol/$1"
-    },
-    {
-      "src": "/up([0-9]+)/(.*)",
-      "dest": "/up$1/$2"
-    },
-    {
-      "src": "/",
-      "dest": "/front/index.html"
-    }
-  ],
   "rewrites": [
     {
       "source": "/",
